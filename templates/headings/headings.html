@@ -1,0 +1,19 @@
+{% extends 'main/index.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="mb-3 text-center">
+        <h2>Działy pbl.ibl.waw.pl</h2>
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" id="filter-input" placeholder="Wpisz frazę filtrowania">
+    </div>
+
+    {% for node in headings_trees %}
+        {% include 'headings/tree_view.html' %}
+    {% endfor %}
+
+    <script src="{% static 'headings/copyListener.js' %}"></script>
+    <script src="{% static 'headings/filterListener.js' %}"></script>
+{% endblock %}

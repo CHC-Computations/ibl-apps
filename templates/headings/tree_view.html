@@ -1,0 +1,72 @@
+{% load static %}
+
+{% if node.children %}
+    <div class="accordion" id="{{ node.data.id }}" name="heading_node">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <div class="row">
+                    <div class="col-1">
+                        <button type="button" class="btn btn-outline-primary" name="copy-btn">KOPIUJ</button>
+                    </div>
+                    <div class="col-11">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ node.data.id }}" aria-expanded="false" aria-controls="collapse{{ node.data.id }}">
+                            {{ node.data.id }} {{ node.data.name }}
+                        </button>
+                    </div>
+                </div>   
+            </h2>
+            <div id="collapse{{ node.data.id }}" class="accordion-collapse collapse" data-bs-parent="#{{ node.data.id }}">
+                <div class="accordion-body">
+                        {% for child in node.children %}
+                            {% with node=child %}
+                                {% include 'headings/tree_view.html' %}
+                            {% endwith %}
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="row align-items-center" name="heading_node">
+        <div class="col-1">
+            <button type="button" class="pe-6 btn btn-outline-primary" name="copy-btn">KOPIUJ</button>
+        </div>
+        <div class="col-11">
+            <div class="container" style="padding:16px; padding-left:20px;">
+                {{ node.data.id }} {{ node.data.name }}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <div class="accordion-item">
+    <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ node.data.id }}" aria-expanded="true" aria-controls="collapseOne">
+            {{ node.data.id }} {{ node.data.name }}
+        </button>
+    </h2>
+    <div id="{{ node.data.id }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            {% if node.children %}
+                    {% for child in node.children %}
+                        {% with node=child %}
+                            {% include 'headings/tree_view_template_boots.html' %}
+                        {% endwith %}
+                    {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    
+</div> {% endcomment %}
