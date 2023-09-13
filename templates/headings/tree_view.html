@@ -38,35 +38,3 @@
         </div>
     </div>
 {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} <div class="accordion-item">
-    <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ node.data.id }}" aria-expanded="true" aria-controls="collapseOne">
-            {{ node.data.id }} {{ node.data.name }}
-        </button>
-    </h2>
-    <div id="{{ node.data.id }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            {% if node.children %}
-                    {% for child in node.children %}
-                        {% with node=child %}
-                            {% include 'headings/tree_view_template_boots.html' %}
-                        {% endwith %}
-                    {% endfor %}
-            {% endif %}
-        </div>
-    </div>
-    
-</div> {% endcomment %}
